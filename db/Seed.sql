@@ -74,3 +74,10 @@ VALUES
 	("Will", "Smith", 15,7),
 	("Elsa", "Gutierrez", 16,4),
 	("Jane", "Doe", 17, null);
+
+const mysql = require('mysql2');
+const inquirer = require('inquirer');
+const inputCheck = require('./utils/inputCheck');
+const express = require('express');
+const PORT = process.env.PORT || 3002;
+const app = express();
