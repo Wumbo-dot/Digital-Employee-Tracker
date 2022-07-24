@@ -197,7 +197,7 @@ messageDisplay.start();
               validate: (name) => { for (const dept of depts) { if (dept.name.toLowerCase().split(" ").includes(name.toLowerCase())) { console.log(`\n${name} department already exists`); return false; } } }
             }
           ])
-          const newDept = await db.createDepartment(answers)
+          const newDept = db.createDepartment(answers)
           // user alert
           term.bgBlue.bold.black("\nA department has been added successfully!");
           console.log("\n");
