@@ -22,7 +22,7 @@ THEN I am prompted to enter the employee’s first name, last name, role, and ma
 WHEN I choose to update an employee role
 THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 
-![image]()
+![image](https://github.com/Wumbo-dot/Digital-Employee-Tracker/blob/main/utils/Screen%20Shot%202022-07-24%20at%2010.26.17%20AM.png)
 
 [link to git hub](https://github.com/Wumbo-dot/Digital-Employee-Tracker)
 
