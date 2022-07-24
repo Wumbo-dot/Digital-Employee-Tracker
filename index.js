@@ -1,4 +1,4 @@
-// IMPORT PACKAGES AND MODULES
+// import and required packages
 
 const msql = require('mysql2/promise');
 const inquirer = require('inquirer');
@@ -9,12 +9,12 @@ require('console.table');
 
 const messageDisplay = require('./lib/messageConsole');
 
-// DISPLAY EMPLOYEE TRACKER WHEN STARTING THE APP
+// start tracker
 
 messageDisplay.start();
 
 
-// WRAP EVERYTHING IN ASYNC AWAIT FUNCTION
+// make functions async
 
 (async () => {
   //conncect to database 
@@ -67,7 +67,7 @@ messageDisplay.start();
 
   while (!shouldQuit) {
 
-    // Main Menu
+    // menu for tracker
     const { task } = await inquirer.prompt(
       {
         name: "task",
@@ -77,9 +77,8 @@ messageDisplay.start();
       }
     );
     
-    // Handle Each Task 
     switch (task) {
-      //View all employees
+      // view all employees
       case "View All Employees":
         {
         //employees is the first index of returned data 
@@ -88,7 +87,7 @@ messageDisplay.start();
         console.log("\n");
         break;
         }
-      // View All Departments
+      // view all departments
       case "View All Departments":
         {
           const departments = await db.getDepartments();
@@ -96,7 +95,7 @@ messageDisplay.start();
           console.log("\n");
           break;
         }
-      // View All Roles
+//view all roles
       case "View All Roles":
         {
           const roles = await db.getRoles();
@@ -104,7 +103,7 @@ messageDisplay.start();
           console.log("\n");
           break;
         }
-      // View Employees by Managers
+      // view employees by managers
       case "View Employees by Managers":
         {
           const empManager = await db.viewEmpManager();
@@ -112,7 +111,7 @@ messageDisplay.start();
           console.log("\n");
           break;
         }
-      // Add Employees
+      // add employees to tracker
       case "Add Employees":
         {
           const [roles, employees] = await Promise.all([db.getRoles(), db.getEmployees()]);
@@ -150,12 +149,12 @@ messageDisplay.start();
             }
           ]);
           const newEmployee = await db.createEmployee(answers);
-          //Notify user 
+          // user alert 
           term.bgBlue.bold.black("\nAn employee has been added successfully!");
           console.log("\n");
           break;    
         }
-      // Add Roles
+      // add roles
       case "Add Roles":
         {
           const departments = await db.getDepartments();
@@ -181,12 +180,12 @@ messageDisplay.start();
             }
           ])
           const newRole = await db.createRole(answers);
-          //Notify user 
+          // user alert
           term.bgBlue.bold.black("\nA role has been added successfully!");
           console.log("\n");
           break; 
         }
-      // Add Departments
+      // add departments
       case "Add Departments":
         {
           const depts = await db.getDepartments();
@@ -199,12 +198,12 @@ messageDisplay.start();
             }
           ])
           const newDept = await db.createDepartment(answers)
-          //Notify user 
+          // user alert
           term.bgBlue.bold.black("\nA department has been added successfully!");
           console.log("\n");
           break; 
         }  
-      // Update Employee Role
+      // update the role for the employee
       case "Update Employee Role": 
         {
           const [roles, employees] = await Promise.all([db.getRoles(), db.getEmployees()]);
@@ -223,12 +222,12 @@ messageDisplay.start();
             },
           ])
           const roleUpdate = await db.updateEmpRole(answers); 
-          //Notify user
+          // user alert
           term.bgMagenta.bold.black("\nThe employee's role has been updated successfully!");
           console.log("\n");
           break; 
         }
-      // Update employee Manager
+      // manager update for the employee
       case "Update employee Manager":
         {
           const employees = await db.getEmployees();
@@ -247,12 +246,12 @@ messageDisplay.start();
             },
           ]);
           const managerUpdate = await db.updateEmpManager(answers);
-          //Notify user
+          // user alert
           term.bgMagenta.bold.black("\nThe employee's manager has been updated successfully!");
           console.log("\n");
           break;
         }
-      // Delete Employees
+      // delete employees
       case "Delete Employees":
         {
           const employees = await db.getEmployees();
@@ -265,12 +264,12 @@ messageDisplay.start();
             },
           ])
           const removeEmp = await db.deleteEmployee(answers);
-          //Notify user
+          // user alert
           term.bgGreen.bold.black("\nThe selected employee has been deleted successfully!");
           console.log("\n");
           break;
         }
-      // Delete Departments
+      // delete departments
       case "Delete Departments":
         {
           const departments = await db.getDepartments();
@@ -283,12 +282,12 @@ messageDisplay.start();
             },
           ]);
           const removeDept = await db.deleteDepartment(answers);
-          //Notify user
+          // user alert
           term.bgGreen.bold.black("\nThe selected department has been deleted successfully!");
           console.log("\n");
           break;
         }
-      // Delete Roles
+      // delete roles
       case "Delete Roles":
         {
           const roles = await db.getRoles();
@@ -301,12 +300,12 @@ messageDisplay.start();
             },
           ]);
           const removeRole = await db.deleteRole(answers);
-          //Notify user
+          // user alerts
           term.bgGreen.bold.black("\nThe selected role has been deleted successfully!");
           console.log("\n");
           break;
         }
-      // View Department's Utilized Budget
+      // view the department utilized budget
       case "View Department's Utilized Budget":
         {
           const viewBudget = await db.viewDeptBudget();
@@ -314,13 +313,13 @@ messageDisplay.start();
           console.log("\n");
           break;
         }
-      // Exit
+      // exit the tracker
       case "Exit":
-        //imported function from messageDisplay file 
+        // imported function from messageDisplay file 
         messageDisplay.exit();
         shouldQuit = true;
     };
   };
-  // Disconnect from database
+  // disconnect from database
   connection.end();
 })();
