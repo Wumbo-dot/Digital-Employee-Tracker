@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "figlet": "^1.5.2",
+    "inquirer": "^8.2.4",
+    "mysql2": "^2.3.3",
+    "table": "^6.8.0",
+    "terminal-kit": "^2.4.0"
+  },
+  "name": "digital-employee-tracker",
+  "description": "AS A business owner I WANT to be able to view and manage the departments, roles, and employees in my company SO THAT I can organize and plan my business",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wumbo-dot/Digital-Employee-Tracker.git"
+  },
+  "author": "JT Gutierrez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wumbo-dot/Digital-Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/Wumbo-dot/Digital-Employee-Tracker#readme"
+}
